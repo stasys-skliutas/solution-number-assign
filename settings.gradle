@@ -1,2 +1,4 @@
 rootProject.name = 'solution-number-assign'
 
+include 'number-assign-service'
+include 'number-assigner'

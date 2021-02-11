@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.stasys'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'dev.stasys.numberassigner.App'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
