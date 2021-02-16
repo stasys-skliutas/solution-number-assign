@@ -1,0 +1,3 @@
+server:
+  tomcat:
+    redirect-context-root: false

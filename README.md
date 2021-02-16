@@ -23,3 +23,20 @@ java -jar your-application.jar. You should also implement mock number assigner s
 case of ambiguities, decide how to resolve them on your own.
 
 ## Solution
+### Build
+To build executable jars for both services, navigate to project directory root and run:
+```
+gradlew.bat clean build bootJar
+```
+### Run number assigner service (assigns values to input string)
+From project root navigate to `number-assigner/build/libs` directory and run the following command:
+```
+java -jar number-assigner-1.0-SNAPSHOT.jar --server.servlet.context-path=/new_path --server.port=8079
+```
+Replace values of the properties `server.servlet.context-path` and `server.port` if needed.
+
+### Run number assign service (calls assigner service)
+From project root navigate to `number-assign-service/build/libs` directory and run the following command:
+```
+java -jar number-assign-service-1.0-SNAPSHOT.jar <>
+```
