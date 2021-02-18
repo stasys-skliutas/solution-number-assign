@@ -31,12 +31,13 @@ gradlew.bat clean build bootJar
 ### Run number assigner service (assigns values to input string)
 From project root navigate to `number-assigner/build/libs` directory and run the following command:
 ```
-java -jar number-assigner-1.0-SNAPSHOT.jar --server.servlet.context-path=/new_path --server.port=8079
+java -jar number-assigner-1.0-SNAPSHOT.jar --server.servlet.context-path=/new_path --server.port=8085
 ```
-Replace values of the properties `server.servlet.context-path` and `server.port` if needed.
+Replace values of the properties `server.servlet.context-path` (sub-path to configure service url) and `server.port` if needed.
 
 ### Run number assign service (calls assigner service)
 From project root navigate to `number-assign-service/build/libs` directory and run the following command:
 ```
-java -jar number-assign-service-1.0-SNAPSHOT.jar <>
+java -jar number-assign-service-0.0.1-SNAPSHOT.jar --pathToInputFile=C:\Temp\numbers.gz --serviceUrl=http://localhost:8085/api/assigner
 ```
+replace `pathToInputFile` and `serviceUrl` with actual values. 
