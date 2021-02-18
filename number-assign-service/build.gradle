@@ -1,23 +1,50 @@
 plugins {
-    id 'java'
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'groovy'
 }
 
-group 'dev.stasys'
-version '1.0-SNAPSHOT'
+group = 'dev.stasys'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
 
 repositories {
-    mavenCentral()
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "2020.0.1")
 }
 
 dependencies {
+	implementation(
+			'org.springframework.cloud:spring-cloud-starter-openfeign',
+			'com.fasterxml.jackson.core:jackson-core:2.12.1',
+			'com.fasterxml.jackson.core:jackson-databind:2.12.1',
+			'com.fasterxml.jackson.core:jackson-annotations:2.12.1'
+	)
+	testImplementation(
+			'org.codehaus.groovy:groovy:2.5.14',
+			'org.spockframework:spock-core:1.3-groovy-2.5',
+	)
+	testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.3.0'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'dev.stasys.numberassignservice.App'
-    }
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
