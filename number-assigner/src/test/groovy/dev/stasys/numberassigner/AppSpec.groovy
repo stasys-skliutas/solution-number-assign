@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import spock.lang.Shared
+import spock.lang.Specification
 import spock.lang.Stepwise
 
 import static org.hamcrest.Matchers.is
@@ -17,9 +18,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Stepwise
-class AppSpec extends spock.lang.Specification {
+class AppSpec extends Specification {
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc
 
     @Shared
     def url = "http://localhost:8080?s=S4"
